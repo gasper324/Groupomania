@@ -4,17 +4,17 @@ exports.createPost = async (req, res, next) => {
     const { title, postText, imageUrl, description } = req.body;
     const { rows } = await db.query(
         "INSERT INTO post (title, postText, imageUrl, description) VALUES ($1, $2, $3, $4)",
-        [title, postText, imageUrl, description, postedAt]
+        [title, postText, imageUrl, description]
       );
     
       res.status(201).send({
         message: "Post added successfully!",
         body: {
-          post: { title, postText, imageUrl, description, postedAt }
+          post: { title, postText, imageUrl, description}
         },
       });
     };
-  
+    
 exports.getAllPosts = async (req, res, next) => {
   const posts = await db.query('SELECT * FROM post ORDER BY postId DESC');
   res.status(200).send(posts.rows)

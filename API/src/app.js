@@ -22,9 +22,11 @@ app.use(express.urlencoded({ extended: true }));
 const index = require('./routes/index');
 const memeRoutes = require('./routes/memes');
 const userRoutes = require('./routes/user');
+const commentRoutes = require('./routes/comments');
 
 app.use(index);
 app.use('/api/memes', memeRoutes);
 app.use('/api/user', userRoutes);
+app.use('/api/comments', commentRoutes);
 
 module.exports = app;
